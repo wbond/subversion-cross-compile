@@ -1,0 +1,11 @@
+--- doc/ssl/SSL_read.pod.orig	2013-06-06 14:35:15.871871829 +0100
++++ doc/ssl/SSL_read.pod	2013-06-06 14:35:25.847746415 +0100
+@@ -86,7 +86,7 @@
+ The read operation was successful; the return value is the number of
+ bytes actually read from the TLS/SSL connection.
+ 
+-=item 0
++=item C<0>
+ 
+ The read operation was not successful. The reason may either be a clean
+ shutdown due to a "close notify" alert sent by the peer (in which case

@@ -1,0 +1,11 @@
+--- doc/ssl/SSL_write.pod.orig	2013-06-06 14:35:15.870871842 +0100
++++ doc/ssl/SSL_write.pod	2013-06-06 14:35:25.865746189 +0100
+@@ -79,7 +79,7 @@
+ The write operation was successful, the return value is the number of
+ bytes actually written to the TLS/SSL connection.
+ 
+-=item 0
++=item C<0>
+ 
+ The write operation was not successful. Probably the underlying connection
+ was closed. Call SSL_get_error() with the return value B<ret> to find out,

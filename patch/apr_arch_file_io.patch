@@ -1,0 +1,30 @@
+--- a/include/arch/win32/apr_arch_file_io.h  2013-07-22 23:20:10.276986234 -0400
++++ b/include/arch/win32/apr_arch_file_io.h  2013-07-22 23:20:24.326984422 -0400
+@@ -171,18 +171,18 @@
+     char *fname;
+     DWORD dwFileAttributes;
+     int eof_hit;
+-    BOOLEAN buffered;          // Use buffered I/O?
+-    int ungetchar;             // Last char provided by an unget op. (-1 = no char)
++    BOOLEAN buffered;          /* Use buffered I/O? */
++    int ungetchar;             /* Last char provided by an unget op. (-1 = no char) */
+     int append; 
+ 
+     /* Stuff for buffered mode */
+     char *buffer;
+-    apr_size_t bufpos;         // Read/Write position in buffer
+-    apr_size_t bufsize;        // The size of the buffer
+-    apr_size_t dataRead;       // amount of valid data read into buffer
+-    int direction;             // buffer being used for 0 = read, 1 = write
+-    apr_off_t filePtr;         // position in file of handle
+-    apr_thread_mutex_t *mutex; // mutex semaphore, must be owned to access the above fields
++    apr_size_t bufpos;         /* Read/Write position in buffer */
++    apr_size_t bufsize;        /* The size of the buffer */
++    apr_size_t dataRead;       /* amount of valid data read into buffer */
++    int direction;             /* buffer being used for 0 = read, 1 = write */
++    apr_off_t filePtr;         /* position in file of handle */
++    apr_thread_mutex_t *mutex; /* mutex semaphore, must be owned to access the above fields */
+ 
+     /* if there is a timeout set, then this pollset is used */
+     apr_pollset_t *pollset;
+

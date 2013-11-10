@@ -1,0 +1,16 @@
+--- doc/ssl/SSL_CTX_set_client_CA_list.pod.orig	2013-06-06 14:35:15.871871829 +0100
++++ doc/ssl/SSL_CTX_set_client_CA_list.pod	2013-06-06 14:35:25.821746742 +0100
+@@ -66,11 +66,11 @@
+ 
+ =over 4
+ 
+-=item 1
++=item C<1>
+ 
+ The operation succeeded.
+ 
+-=item 0
++=item C<0>
+ 
+ A failure while manipulating the STACK_OF(X509_NAME) object occurred or
+ the X509_NAME could not be extracted from B<cacert>. Check the error stack

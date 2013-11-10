@@ -1,0 +1,16 @@
+--- doc/ssl/SSL_session_reused.pod.orig	2013-06-06 14:35:15.871871829 +0100
++++ doc/ssl/SSL_session_reused.pod	2013-06-06 14:35:25.849746390 +0100
+@@ -27,11 +27,11 @@
+ 
+ =over 4
+ 
+-=item 0
++=item C<0>
+ 
+ A new session was negotiated.
+ 
+-=item 1
++=item C<1>
+ 
+ A session was reused.
+ 

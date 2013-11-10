@@ -1,0 +1,18 @@
+--- doc/ssl/SSL_CTX_load_verify_locations.pod.orig	2013-06-06 14:35:15.870871842 +0100
++++ doc/ssl/SSL_CTX_load_verify_locations.pod	2013-06-06 14:35:25.818746780 +0100
+@@ -100,13 +100,13 @@
+ 
+ =over 4
+ 
+-=item 0
++=item C<0>
+ 
+ The operation failed because B<CAfile> and B<CApath> are NULL or the
+ processing at one of the locations specified failed. Check the error
+ stack to find out the reason.
+ 
+-=item 1
++=item C<1>
+ 
+ The operation succeeded.
+ 

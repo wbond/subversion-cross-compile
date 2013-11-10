@@ -1,0 +1,16 @@
+--- doc/ssl/SSL_set_session.pod.orig	2013-06-06 14:35:15.870871842 +0100
++++ doc/ssl/SSL_set_session.pod	2013-06-06 14:35:25.855746315 +0100
+@@ -37,11 +37,11 @@
+ 
+ =over 4
+ 
+-=item 0
++=item C<0>
+ 
+ The operation failed; check the error stack to find out the reason.
+ 
+-=item 1
++=item C<1>
+ 
+ The operation succeeded.
+ 

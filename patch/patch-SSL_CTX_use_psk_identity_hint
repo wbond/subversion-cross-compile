@@ -1,0 +1,24 @@
+--- doc/ssl/SSL_CTX_use_psk_identity_hint.pod.orig	2013-06-06 14:35:15.870871842 +0100
++++ doc/ssl/SSL_CTX_use_psk_identity_hint.pod	2013-06-06 14:36:42.456783309 +0100
+@@ -81,6 +81,8 @@
+ 
+ Return values from the server callback are interpreted as follows:
+ 
++=over
++
+ =item > 0
+ 
+ PSK identity was found and the server callback has provided the PSK
+@@ -94,9 +96,11 @@
+ connection will fail with decryption_error before it will be finished
+ completely.
+ 
+-=item 0
++=item C<0>
+ 
+ PSK identity was not found. An "unknown_psk_identity" alert message
+ will be sent and the connection setup fails.
+ 
++=back
++
+ =cut

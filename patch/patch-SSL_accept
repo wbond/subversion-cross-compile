@@ -1,0 +1,17 @@
+--- doc/ssl/SSL_accept.pod.orig	2013-06-06 14:35:15.871871829 +0100
++++ doc/ssl/SSL_accept.pod	2013-06-06 14:35:25.796747057 +0100
+@@ -44,12 +44,12 @@
+ 
+ =over 4
+ 
+-=item 1
++=item C<1>
+ 
+ The TLS/SSL handshake was successfully completed, a TLS/SSL connection has been
+ established.
+ 
+-=item 0
++=item C<0>
+ 
+ The TLS/SSL handshake was not successful but was shut down controlled and
+ by the specifications of the TLS/SSL protocol. Call SSL_get_error() with the
