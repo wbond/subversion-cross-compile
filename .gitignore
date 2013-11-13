@@ -1,3 +1,6 @@
+mxe/
+pthreads-w32/
+
 bin
 build
 env
