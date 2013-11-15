@@ -25,7 +25,7 @@ mkdir env/lib
 mkdir env/include
 mkdir env/bin
 mkdir build
-mkdir bin
+mkdir -p bin
 
 
 # Ensure we have "python" as version 2.x since many of the build scripts are assuming that

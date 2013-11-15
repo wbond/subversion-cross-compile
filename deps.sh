@@ -6,6 +6,13 @@ else
 	DOWNLOAD="curl -O --insecure --location"
 fi
 
+# If gsed is available, use that since regular sed is probably the old BSD one
+if [[ $(command -v gsed) != "" ]]; then
+  mkdir -p bin
+  ln -s $(command -v gsed) bin/sed
+  export PATH="$(pwd)/bin:$PATH"
+fi
+
 
 $DOWNLOAD http://www.apache.org/dist/apr/apr-1.4.8-win32-src.zip
 unzip apr-1.4.8-win32-src.zip
@@ -42,12 +49,18 @@ rm serf-0.7.2.tar.gz
  
 $DOWNLOAD https://github.com/wbond/subversion/archive/1.8.x.zip
 unzip 1.8.x
+sed -i -E 's/(#define\s+SVN_VER_NUMTAG\s+)"-dev"/\1""/' subversion-1.8.x/subversion/include/svn_version.h
+sed -i -E 's/(#define\s+SVN_VER_TAG\s+)" \(under development\)"/\1" (Sublime SVN)"/' subversion-1.8.x/subversion/include/svn_version.h
 rm 1.8.x.zip
 
 $DOWNLOAD https://github.com/wbond/subversion/archive/1.7.x.zip
 unzip 1.7.x
+sed -i -E 's/(#define\s+SVN_VER_NUMTAG\s+)"-dev"/\1""/' subversion-1.7.x/subversion/include/svn_version.h
+sed -i -E 's/(#define\s+SVN_VER_TAG\s+)" \(under development\)"/\1" (Sublime SVN)"/' subversion-1.7.x/subversion/include/svn_version.h
 rm 1.7.x.zip
 
 $DOWNLOAD https://github.com/wbond/subversion/archive/1.6.x.zip
 unzip 1.6.x
+sed -i -E 's/(#define\s+SVN_VER_NUMTAG\s+)"-dev"/\1""/' subversion-1.6.x/subversion/include/svn_version.h
+sed -i -E 's/(#define\s+SVN_VER_TAG\s+)" \(under development\)"/\1" (Sublime SVN)"/' subversion-1.6.x/subversion/include/svn_version.h
 rm 1.6.x.zip
