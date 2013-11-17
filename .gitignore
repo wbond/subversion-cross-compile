@@ -9,7 +9,6 @@ apr
 apr-util
 neon-0.30.0
 openssl
-serf-0.7.2
 serf-1.2.1
 sqlite-amalgamation
 subversion-1.6.x

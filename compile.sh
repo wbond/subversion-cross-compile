@@ -122,16 +122,6 @@ make install
 cd ..
 
 
-cd serf-0.7.2
-find . -type f -exec dos2unix '{}' \;
-sh buildconf
-./configure --host=${TOOL_PREFIX} --with-apr=$BUILD_DIR/env --with-apr-util=$BUILD_DIR/env --with-openssl=$BUILD_DIR/openssl --prefix=$BUILD_DIR/env CPPFLAGS=-I$BUILD_DIR/env/include LDFLAGS="-L$BUILD_DIR/env/lib"
-sed -i "s,LDFLAGS = ,LDFLAGS = -no-undefined ," Makefile
-make
-make install
-cd ..
-
-
 cd neon-0.30.0
 ne_cv_os_uname=MINGW ./configure --host=${TOOL_PREFIX} --prefix=$BUILD_DIR/env --with-ssl --with-expat --disable-nls --enable-shared --disable-static --with-libs=/Users/wbond/dev/git/subversion-compile/env CPPFLAGS=-I$BUILD_DIR/env/include/apr-1
 make

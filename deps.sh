@@ -42,10 +42,6 @@ mv sqlite-amalgamation-* sqlite-amalgamation
 $DOWNLOAD https://serf.googlecode.com/files/serf-1.2.1.zip
 unzip serf-1.2.1.zip
 rm serf-1.2.1.zip
- 
-$DOWNLOAD https://serf.googlecode.com/files/serf-0.7.2.tar.gz
-tar xvfz serf-0.7.2.tar.gz
-rm serf-0.7.2.tar.gz
 
 $DOWNLOAD http://www.webdav.org/neon/neon-0.30.0.tar.gz
 tar xvfz neon-0.30.0.tar.gz
