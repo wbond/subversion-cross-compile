@@ -6,6 +6,7 @@ rm -Rf build
 
 rm -Rf apr
 rm -Rf apr-util
+rm -Rf neon-0.30.0
 rm -Rf openssl
 rm -Rf serf-0.7.2
 rm -Rf serf-1.2.1

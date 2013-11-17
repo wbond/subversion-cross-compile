@@ -132,6 +132,13 @@ make install
 cd ..
 
 
+cd neon-0.30.0
+ne_cv_os_uname=MINGW ./configure --host=${TOOL_PREFIX} --prefix=$BUILD_DIR/env --with-ssl --with-expat --disable-nls --enable-shared --disable-static --with-libs=/Users/wbond/dev/git/subversion-compile/env CPPFLAGS=-I$BUILD_DIR/env/include/apr-1
+make
+make install
+cd ..
+
+
 ${TOOL_PREFIX}-strip $BUILD_DIR/env/bin/*.dll
 
 
@@ -184,8 +191,7 @@ cp -R ../sqlite-amalgamation ./
 
 sh autogen.sh
 
-./configure --host=${TOOL_PREFIX} --prefix=$BUILD_DIR/env --with-apr=../env --with-apr-util=../env --enable-static=no --disable-nls --with-serf=$BUILD_DIR/env --with-zlib=$BUILD_DIR/env --with-gnome-keyring=no --enable-shared=yes --with-neon=no --without-apxs CPPFLAGS=-I$BUILD_DIR/apr/include
-
+./configure --host=${TOOL_PREFIX} --prefix=$BUILD_DIR/env --with-apr=../env --with-apr-util=../env --enable-static=no --disable-nls --with-serf=$BUILD_DIR/env --with-zlib=$BUILD_DIR/env --with-gnome-keyring=no --enable-shared=yes --with-serf=no --without-apxs --with-neon=../env CPPFLAGS=-I$BUILD_DIR/apr/include
 
 make fsmod-lib ramod-lib lib bin
 

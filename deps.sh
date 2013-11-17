@@ -46,6 +46,10 @@ rm serf-1.2.1.zip
 $DOWNLOAD https://serf.googlecode.com/files/serf-0.7.2.tar.gz
 tar xvfz serf-0.7.2.tar.gz
 rm serf-0.7.2.tar.gz
+
+$DOWNLOAD http://www.webdav.org/neon/neon-0.30.0.tar.gz
+tar xvfz neon-0.30.0.tar.gz
+rm neon-0.30.0.tar.gz
  
 $DOWNLOAD https://github.com/wbond/subversion/archive/1.8.x.zip
 unzip 1.8.x
