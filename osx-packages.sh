@@ -1,16 +1,16 @@
 #!/bin/bash
 
-#brew install dos2unix
-#brew install autoconf
-#brew install gnu-sed
+brew install dos2unix
+brew install autoconf
+brew install gnu-sed
 
 # For mxe
-#brew install automake wget cmake intltool xz
+brew install automake wget cmake intltool xz
 
-#git clone -b stable git@github.com:mxe/mxe.git
-#cd mxe
-#make gcc
-#cd ..
+git clone -b stable git@github.com:mxe/mxe.git
+cd mxe
+make gcc
+cd ..
 
 # Custom pthreads install since mxe only makes the static version
 wget ftp://sourceware.org/pub/pthreads-win32/pthreads-w32-2-9-1-release.tar.gz
