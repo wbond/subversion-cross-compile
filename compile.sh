@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 BUILD_DIR=$(pwd)
 
 
@@ -20,19 +22,21 @@ else
 fi
 
 
-mkdir env
-mkdir env/lib
-mkdir env/include
-mkdir env/bin
-mkdir build
+mkdir -p env
+mkdir -p env/lib
+mkdir -p env/include
+mkdir -p env/bin
+mkdir -p build
 mkdir -p bin
 
 
 # Ensure we have "python" as version 2.x since many of the build scripts are assuming that
-ln -s /usr/bin/python2 bin/python
+if [[ ! -h bin/python ]]; then
+  ln -s /usr/bin/python2 bin/python
+fi
 
 # If gsed is available, use that since regular sed is probably the old BSD one
-if [[ $(command -v gsed) != "" ]]; then
+if [[ $(command -v gsed) != "" && ! -h bin/sed ]]; then
   ln -s $(command -v gsed) bin/sed
 fi
 

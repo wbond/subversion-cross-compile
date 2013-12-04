@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if [[ $(command -v curl) == "" ]]; then
 	DOWNLOAD="wget --no-check-certificate"
 else
@@ -7,7 +9,7 @@ else
 fi
 
 # If gsed is available, use that since regular sed is probably the old BSD one
-if [[ $(command -v gsed) != "" ]]; then
+if [[ $(command -v gsed) != "" && ! -h bin/sed ]]; then
   mkdir -p bin
   ln -s $(command -v gsed) bin/sed
   export PATH="$(pwd)/bin:$PATH"
