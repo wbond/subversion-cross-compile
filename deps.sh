@@ -16,14 +16,14 @@ if [[ $(command -v gsed) != "" && ! -h bin/sed ]]; then
 fi
 
 
-$DOWNLOAD http://www.apache.org/dist/apr/apr-1.4.8-win32-src.zip
-unzip apr-1.4.8-win32-src.zip
-rm apr-1.4.8-win32-src.zip
+$DOWNLOAD https://github.com/apache/apr/archive/1.4.8.zip
+unzip 1.4.8.zip
+rm 1.4.8.zip
 mv apr-* apr
 
-$DOWNLOAD http://www.apache.org/dist/apr/apr-util-1.5.2-win32-src.zip
-unzip apr-util-1.5.2-win32-src.zip
-rm apr-util-1.5.2-win32-src.zip
+$DOWNLOAD http://www.apache.org/dist/apr/apr-util-1.5.3-win32-src.zip
+unzip apr-util-1.5.3-win32-src.zip
+rm apr-util-1.5.3-win32-src.zip
 mv apr-util-* apr-util
  
 $DOWNLOAD http://zlib.net/zlib128.zip
@@ -40,10 +40,10 @@ $DOWNLOAD http://www.sqlite.org/2013/sqlite-amalgamation-3071700.zip
 unzip sqlite-amalgamation-3071700.zip
 rm sqlite-amalgamation-3071700.zip
 mv sqlite-amalgamation-* sqlite-amalgamation
- 
-$DOWNLOAD https://serf.googlecode.com/files/serf-1.2.1.zip
-unzip serf-1.2.1.zip
-rm serf-1.2.1.zip
+
+$DOWNLOAD https://serf.googlecode.com/files/serf-1.3.2.tar.bz2
+tar xvfj serf-1.3.2.tar.bz2
+rm serf-1.3.2.tar.bz2
 
 $DOWNLOAD http://www.webdav.org/neon/neon-0.30.0.tar.gz
 tar xvfz neon-0.30.0.tar.gz

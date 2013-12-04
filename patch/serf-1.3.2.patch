@@ -1,0 +1,109 @@
+--- a/SConstruct	2013-12-03 21:01:30.000000000 -0500
++++ b/SConstruct	2013-12-03 21:29:45.000000000 -0500
+@@ -65,6 +65,7 @@
+ else:
+   default_incdir='/usr'
+   default_libdir='$PREFIX/lib'
++  default_bindir='$PREFIX/bin'
+   default_prefix='/usr/local'
+ 
+ opts = Variables(files=[SAVED_CONFIG])
+@@ -77,6 +78,10 @@
+                'Directory to install architecture dependent libraries under',
+                default_libdir,
+                createPathIsDirCreateWithTarget('install')),
++  PathVariable('BINDIR',
++               'Directory to install architecture dependent binaries under',
++               default_bindir,
++               createPathIsDirCreateWithTarget('install')),
+   PathVariable('APR',
+                "Path to apr-1-config, or to APR's install area",
+                default_incdir,
+@@ -149,7 +154,7 @@
+ env = Environment(variables=opts,
+                   tools=('default', 'textfile',),
+                   CPPPATH=['.', ],
+-                  )
++                  PLATFORM='posix')
+ 
+ env.Append(BUILDERS = {
+     'GenDef' : 
+@@ -202,6 +207,7 @@
+ 
+ thisdir = os.getcwd()
+ libdir = '$LIBDIR'
++bindir = '$BINDIR'
+ incdir = '$PREFIX/include/serf-$MAJOR'
+ 
+ # This version string is used in the dynamic library name, and for Mac OS X also
+@@ -210,7 +216,8 @@
+ # Unfortunately we can't set the .dylib compatibility_version option separately
+ # from current_version, so don't use the PATCH level to avoid that build and
+ # runtime patch levels have to be identical.
+-env['SHLIBVERSION'] = '%d.%d.%d' % (MAJOR, MINOR, 0)
++env['SHLIBVERSION'] = ''
++env['SHLIBSUFFIX'] = '-0.dll'
+ 
+ LIBNAME = 'libserf-%d' % (MAJOR,)
+ if sys.platform != 'win32':
+@@ -218,12 +225,14 @@
+ else:
+   LIBNAMESTATIC = 'serf-${MAJOR}'
+ 
++env.Append(LINKFLAGS='-Wl,--out-implib=%s.dll.a' % LIBNAME)
++
+ env.Append(RPATH=libdir,
+            PDB='${TARGET.filebase}.pdb')
+ 
+-if sys.platform == 'darwin':
++#if sys.platform == 'darwin':
+ #  linkflags.append('-Wl,-install_name,@executable_path/%s.dylib' % (LIBNAME,))
+-  env.Append(LINKFLAGS='-Wl,-install_name,%s/%s.dylib' % (thisdir, LIBNAME,))
++#  env.Append(LINKFLAGS='-Wl,-install_name,%s/%s.dylib' % (thisdir, LIBNAME,))
+ 
+ if sys.platform != 'win32':
+   ### gcc only. figure out appropriate test / better way to check these
+@@ -274,6 +283,9 @@
+ lib_static = env.StaticLibrary(LIBNAMESTATIC, SOURCES)
+ lib_shared = env.SharedLibrary(LIBNAME, SOURCES + SHARED_SOURCES)
+ 
++implib = '%s.dll.a' % LIBNAME
++env.Clean(lib_shared, implib)
++
+ if aprstatic:
+   env.Append(CPPDEFINES=['APR_DECLARE_STATIC', 'APU_DECLARE_STATIC'])
+ 
+@@ -398,9 +410,10 @@
+ # INSTALLATION STUFF
+ 
+ install_static = env.Install(libdir, lib_static)
+-install_shared = env.InstallVersionedLib(libdir, lib_shared)
++install_dll = env.Install(libdir, [implib])
++install_shared = env.InstallVersionedLib(bindir, lib_shared)
+ 
+-if sys.platform == 'darwin':
++#if sys.platform == 'darwin':
+   # Change the shared library install name (id) to its final name and location.
+   # Notes:
+   # If --install-sandbox=<path> is specified, install_shared_path will point
+@@ -409,14 +422,14 @@
+   # Also, we shouldn't use the complete version number for id, as that'll
+   # make applications depend on the exact major.minor.patch version of serf.
+ 
+-  install_shared_path = install_shared[0].abspath
+-  target_install_shared_path = os.path.join(libdir, '%s.dylib' % LIBNAME)
+-  env.AddPostAction(install_shared, ('install_name_tool -id %s %s'
+-                                     % (target_install_shared_path,
+-                                        install_shared_path)))
++#  install_shared_path = install_shared[0].abspath
++#  target_install_shared_path = os.path.join(libdir, '%s.dylib' % LIBNAME)
++#  env.AddPostAction(install_shared, ('install_name_tool -id %s %s'
++#                                     % (target_install_shared_path,
++#                                        install_shared_path)))
+ 
+ env.Alias('install-lib', [install_static, install_shared,
+-                          ])
++                          install_dll])
+ env.Alias('install-inc', env.Install(incdir, HEADER_FILES))
+ env.Alias('install-pc', env.Install(os.path.join(libdir, 'pkgconfig'),
+                                     pkgconfig))

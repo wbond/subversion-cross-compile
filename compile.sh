@@ -116,13 +116,9 @@ make -f win32/Makefile.gcc install DESTDIR=$BUILD_DIR/env INCLUDE_PATH=/include 
 cd ..
 
 
-cd serf-1.2.1
-find . -type f -exec dos2unix '{}' \;
-sh buildconf
-./configure --host=${TOOL_PREFIX} --with-apr=$BUILD_DIR/env --with-apr-util=$BUILD_DIR/env --with-openssl=$BUILD_DIR/openssl --prefix=$BUILD_DIR/env CPPFLAGS=-I$BUILD_DIR/env/include LDFLAGS="-L$BUILD_DIR/env/lib"
-sed -i "s,LDFLAGS = ,LDFLAGS = -no-undefined ," Makefile
-make
-make install
+cd serf-1.3.2
+patch -p1 < ../patch/serf-1.3.2.patch
+scons APR=$BUILD_DIR/env APU=$BUILD_DIR/env OPENSSL=$BUILD_DIR/openssl PREFIX=$BUILD_DIR/env CPPFLAGS=-I$BUILD_DIR/env/include LINKFLAGS="-L$BUILD_DIR/env/lib" CC=$(command -v ${TOOL_PREFIX}-gcc) install
 cd ..
 
 
