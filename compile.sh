@@ -56,6 +56,13 @@ fi
 
 cp $BUILD_DIR/patch/Ws2tcpip.h $BUILD_DIR/env/include/
 
+# Customized to include a couple of extra constants
+cp $BUILD_DIR/patch/wincrypt.h $BUILD_DIR/env/include/
+
+# Creates a .dll.a file for the purpose of linking subversion so it can
+# use the native windows password encryption functionality
+${TOOL_PREFIX}-dlltool -d $BUILD_DIR/patch/crypt32.def -l $BUILD_DIR/env/lib/crypt32.dll.a
+
 
 cd openssl
 patch -p0 < ../patch/patch-cms

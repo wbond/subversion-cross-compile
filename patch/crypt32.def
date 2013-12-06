@@ -1,0 +1,9 @@
+LIBRARY crypt32.dll
+EXPORTS
+CertCreateCertificateContext@12
+CertGetCertificateChain@32
+CertVerifyCertificateChainPolicy@16
+CertFreeCertificateChain@4
+CertFreeCertificateContext@4
+CryptProtectData@28
+CryptUnprotectData@28
