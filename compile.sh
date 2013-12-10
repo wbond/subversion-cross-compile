@@ -61,7 +61,7 @@ cp $BUILD_DIR/patch/wincrypt.h $BUILD_DIR/env/include/
 
 # Creates a .dll.a file for the purpose of linking subversion so it can
 # use the native windows password encryption functionality
-${TOOL_PREFIX}-dlltool -d $BUILD_DIR/patch/crypt32.def -l $BUILD_DIR/env/lib/crypt32.dll.a
+${TOOL_PREFIX}-dlltool -k -d $BUILD_DIR/patch/crypt32.def -l $BUILD_DIR/env/lib/crypt32.dll.a
 
 
 cd openssl
