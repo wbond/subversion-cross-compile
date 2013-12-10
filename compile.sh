@@ -136,6 +136,15 @@ make install
 cd ..
 
 
+cd putty-plink-fixes
+perl mkfiles.pl
+cd windows
+sed -i -e 's/-mno-cygwin //' Makefile.cyg
+make VER="-DMODIFIED" TOOLPATH=${TOOL_PREFIX}- -f Makefile.cyg plink.exe
+cp plink.exe $BUIL_DIR/bin/
+cd ../..
+
+
 ${TOOL_PREFIX}-strip $BUILD_DIR/env/bin/*.dll
 
 

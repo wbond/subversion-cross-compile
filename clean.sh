@@ -8,6 +8,7 @@ rm -Rf apr
 rm -Rf apr-util
 rm -Rf neon-0.30.0
 rm -Rf openssl
+rm -Rf putty-plink-fixes
 rm -Rf serf-1.3.2
 rm -Rf sqlite-amalgamation
 rm -Rf subversion-1.6.x

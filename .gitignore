@@ -9,6 +9,7 @@ apr
 apr-util
 neon-0.30.0
 openssl
+putty-plink-fixes
 serf-1.3.2
 sqlite-amalgamation
 subversion-1.6.x

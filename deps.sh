@@ -66,3 +66,7 @@ unzip 1.6.x
 sed -i -E 's/(#define\s+SVN_VER_NUMTAG\s+)"-dev"/\1""/' subversion-1.6.x/subversion/include/svn_version.h
 sed -i -E 's/(#define\s+SVN_VER_TAG\s+)" \(under development\)"/\1" (Sublime SVN)"/' subversion-1.6.x/subversion/include/svn_version.h
 rm 1.6.x.zip
+
+$DOWNLOAD https://github.com/wbond/putty/archive/plink-fixes.zip
+unzip plink-fixes.zip
+rm plink-fixes.zip
